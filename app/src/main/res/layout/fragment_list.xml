@@ -1,0 +1,28 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.smteck.androbd.birprotic.controler.ListFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/icon_background"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Data Is Running" />
+
+        <ListView
+            android:id="@+id/listViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+        </ListView>
+    </LinearLayout>
+
+</FrameLayout>
