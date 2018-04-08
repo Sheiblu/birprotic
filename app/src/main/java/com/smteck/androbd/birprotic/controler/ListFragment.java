@@ -1,13 +1,16 @@
 package com.smteck.androbd.birprotic.controler;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.smteck.androbd.birprotic.AppController;
+import com.smteck.androbd.birprotic.model.AppController;
 import com.smteck.androbd.birprotic.R;
 
 import org.json.JSONArray;
@@ -26,11 +29,17 @@ import org.json.JSONObject;
 
 public class ListFragment extends Fragment {
 
-    TextView tbViewInfo;
+
+    TextView textWorning;
     ListView listViewName;
-    String [] dataId ;
-    String [] dataName  ;
-    String [] dataAge ;
+
+    String [] name ;
+    String [] place_birth  ;
+    String [] other_award ;
+    String [] nationality ;
+    String [] work_edu  ;
+    String [] role_war ;
+
 
 
     public ListFragment() {
@@ -43,18 +52,66 @@ public class ListFragment extends Fragment {
          View v = inflater.inflate(R.layout.fragment_list, container, false);
 
         listViewName = (ListView) v.findViewById(R.id.listViewName);
-       // fetchingData();
+        textWorning = (TextView) v.findViewById(R.id.textWorning);
+
+        fetchingData();
+
+        return v;
+    }
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        listViewName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position1, long id) {
+
+                // Intent i=new Intent(getActivity(),detailsInfo_activity.class);
+                Log.d("Variable Inatial", "method :::::: "+position1);
+
+                DetailFragment objdetailInfoFragment = new DetailFragment();
+                Bundle args = new Bundle();
+
+                args.putString("name",name[position1]);
+                args.putString("place_birth",place_birth[position1]);
+                args.putString("other_award",other_award[position1]);
+                args.putString("nationality",nationality[position1]);
+                args.putString("work_edu",work_edu[position1]);
+                args.putString("role_war",role_war[position1]);
+
+
+                objdetailInfoFragment.setArguments(args);
+
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.frame,objdetailInfoFragment).commit();
+                // fragmentManager.beginTransaction().add(R.id.frame, objdetailInfoFragment).replace(R.id.frame, objdetailInfoFragment).commit();
+
+
+            }
+        });
+    }
+
+
+
+    void fetchingData() {
 
         String myURL = "https://undrooping-till.000webhostapp.com/getMuktijurdaDetail.php";
-        //String myURL = "https://undrooping-till.000webhostapp.com/getdata.php";
+
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(myURL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 
-                dataId = new String[response.length()];
-                dataName = new String[response.length()] ;
-                dataAge = new String[response.length()];
+                name = new String[response.length()];
+                place_birth = new String[response.length()] ;
+                other_award = new String[response.length()];
+                nationality = new String[response.length()];
+                work_edu = new String[response.length()] ;
+                role_war = new String[response.length()];
+
+
+
 
 
                 for (int i = 0 ; i < response.length();i++){
@@ -62,14 +119,15 @@ public class ListFragment extends Fragment {
                     try {
                         JSONObject jsonObject = (JSONObject) response.get(i);
 
-                        dataId [i]  = jsonObject.getString("muktijurda_id");
-                        dataName [i] =  jsonObject.getString("muktijurda_name");
-                        dataAge [i]  = jsonObject.getString("award");
+                        name [i]  = jsonObject.getString("muktijurda_name");
+                        place_birth [i] =  jsonObject.getString("birthday_place");
+                        other_award [i]  = jsonObject.getString("other_award");
+                        nationality [i]  = jsonObject.getString("nationality");
+                        work_edu [i] =  jsonObject.getString("education_and_work");
+                        role_war [i]  = jsonObject.getString("roal_in_war");
 
-
-//                        dataId [i]  = jsonObject.getString("Id");
-//                        dataName [i] =  jsonObject.getString("Name");
-//                        dataAge [i]  = jsonObject.getString("image");
+                        textWorning.setHeight(45);
+                        textWorning.setText(" Name List");
 
 
                     } catch (JSONException e) {
@@ -80,111 +138,20 @@ public class ListFragment extends Fragment {
                 }
 
                 Toast.makeText(getContext(),"Data  Found  ",Toast.LENGTH_LONG).show();
-                listViewName.setAdapter(new ArrayAdapter(getContext(),R.layout.listshow,R.id.textViewName ,dataName));
+                listViewName.setAdapter(new ArrayAdapter(getContext(),R.layout.listshow,R.id.textViewName ,name));
 
-                listViewName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-//                        Intent k = new Intent(getContext(),DetailActivity.class);
-//
-//                        k.putExtra("name",dataName[i]);
-//                        k.putExtra("id",dataId[i]);
-//                        k.putExtra("age",dataAge[i]);
-//
-//                        startActivity(k);
-                        Toast.makeText(getContext(),"My id = "+dataId[i],Toast.LENGTH_LONG).show();
-
-                    }
-                });
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d("--Volley Lod--",error);
+                textWorning.setText(" Problem Please Check your internet");
             }
         });
 
         AppController.getInstance().addToRequestQueue(jsonArrayRequest);
 
-        return v;
     }
-
-
-
-
-
-
-
-
-
-    void fetchingData() {
-
-      //  String myURL = "https://undrooping-till.000webhostapp.com/muktijurda/android/getMuktijutdaDetail.php";
-        String myURL = "https://undrooping-till.000webhostapp.com/getdata.php";
-
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(myURL, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-
-                dataId = new String[response.length()];
-                dataName = new String[response.length()] ;
-                dataAge = new String[response.length()];
-
-
-                for (int i = 0 ; i < response.length();i++){
-
-                    try {
-                        JSONObject jsonObject = (JSONObject) response.get(i);
-
-//                        dataId [i]  = jsonObject.getString("muktijurda_id");
-//                        dataName [i] =  jsonObject.getString("muktijurda_name");
-//                        dataAge [i]  = jsonObject.getString("image");
-
-                        dataId [i]  = jsonObject.getString("Id");
-                        dataName [i] =  jsonObject.getString("Name");
-                        dataAge [i]  = jsonObject.getString("Age");
-
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Toast.makeText(getContext(),"Data Somethink Wrong "+e,Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                Toast.makeText(getContext(),"Data  Found  ",Toast.LENGTH_LONG).show();
-                listViewName.setAdapter(new ArrayAdapter(getContext(),R.layout.listshow,R.id.textViewName ,dataName));
-
-                listViewName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-//                        Intent k = new Intent(getContext(),DetailActivity.class);
-//
-//                        k.putExtra("name",dataName[i]);
-//                        k.putExtra("id",dataId[i]);
-//                        k.putExtra("age",dataAge[i]);
-//
-//                        startActivity(k);
-                        Toast.makeText(getContext(),"My id = "+dataId[i],Toast.LENGTH_LONG).show();
-
-                    }
-                });
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d("Volley Lod",error);
-            }
-        });
-
-        AppController.getInstance().addToRequestQueue(jsonArrayRequest);
-
-
-    }
-
-
 
 }

@@ -49,7 +49,7 @@ public class LogoActivity extends AppCompatActivity {
 
 
                 try {
-                    sleep(5000);
+                    sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {

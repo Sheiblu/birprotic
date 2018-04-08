@@ -1,4 +1,4 @@
-package com.smteck.androbd.birprotic;
+package com.smteck.androbd.birprotic.model;
 
 import android.app.Application;
 import android.text.TextUtils;

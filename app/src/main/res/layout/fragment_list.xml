@@ -6,6 +6,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
+        android:id="@+id/listLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -13,9 +14,13 @@
         >
 
         <TextView
+            android:id="@+id/textWorning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Data Is Running" />
+            android:height="700dp"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:text="Loading .... " />
 
         <ListView
             android:id="@+id/listViewName"
