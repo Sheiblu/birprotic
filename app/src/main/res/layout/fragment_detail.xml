@@ -17,7 +17,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
 
             <LinearLayout
@@ -30,6 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="নামঃ"
+                    android:textSize="20dp"
                     android:textColor="?android:attr/colorMultiSelectHighlight" />
 
                 <TextView
@@ -37,6 +39,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:textSize="20dp"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -47,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:textSize="16dp"
                 />
 
             <TextView
@@ -54,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:textSize="20dp"
                 android:textColor="?android:attr/colorMultiSelectHighlight"
                 />
 
@@ -62,6 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:textSize="16dp"
                 />
 
             <TextView
@@ -69,6 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="মুক্তিযুদ্ধে ভূমিকাঃ"
+                android:textSize="20dp"
                 android:textColor="?android:attr/colorMultiSelectHighlight"/>
 
             <TextView
@@ -76,6 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:textSize="16dp"
                 />
 
             <TextView
@@ -83,6 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:textSize="20dp"
                 android:textColor="?android:attr/colorMultiSelectHighlight"
                 />
 
@@ -92,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
+                android:textSize="16dp"
                 />
 
             <TextView
@@ -99,6 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:textSize="20dp"
                 android:textColor="?android:attr/colorMultiSelectHighlight"
                 />
 
@@ -108,6 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
+                android:textSize="16dp"
                 />
 
         </LinearLayout>

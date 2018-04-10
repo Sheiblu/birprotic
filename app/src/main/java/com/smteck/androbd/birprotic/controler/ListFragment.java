@@ -1,7 +1,11 @@
 package com.smteck.androbd.birprotic.controler;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
@@ -32,6 +36,7 @@ public class ListFragment extends Fragment {
 
     TextView textWorning;
     ListView listViewName;
+    LinearLayout linearLayout;
 
     String [] name ;
     String [] place_birth  ;
@@ -53,6 +58,7 @@ public class ListFragment extends Fragment {
 
         listViewName = (ListView) v.findViewById(R.id.listViewName);
         textWorning = (TextView) v.findViewById(R.id.textWorning);
+        linearLayout = (LinearLayout) v.findViewById(R.id.listLayout);
 
         fetchingData();
 
@@ -94,11 +100,10 @@ public class ListFragment extends Fragment {
 
 
 
+
     void fetchingData() {
 
         String myURL = "https://undrooping-till.000webhostapp.com/getMuktijurdaDetail.php";
-
-
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(myURL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -110,10 +115,7 @@ public class ListFragment extends Fragment {
                 work_edu = new String[response.length()] ;
                 role_war = new String[response.length()];
 
-
-
-
-
+                Log.d("Delai in fo ","Found ");
                 for (int i = 0 ; i < response.length();i++){
 
                     try {
@@ -128,6 +130,8 @@ public class ListFragment extends Fragment {
 
                         textWorning.setHeight(45);
                         textWorning.setText(" Name List");
+                        textWorning.setTextColor(Color.RED);
+                        textWorning.setBackgroundColor(Color.GREEN);
 
 
                     } catch (JSONException e) {
@@ -143,10 +147,20 @@ public class ListFragment extends Fragment {
 
             }
         }, new Response.ErrorListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d("--Volley Lod--",error);
                 textWorning.setText(" Problem Please Check your internet");
+
+
+                int sdk = android.os.Build.VERSION.SDK_INT;
+                if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                    linearLayout.setBackgroundDrawable(Drawable.createFromPath("/drawable/nointernet"));
+                } else {
+                    linearLayout.setBackground(Drawable.createFromPath("/drawable/nointernet"));
+                }
+
             }
         });
 

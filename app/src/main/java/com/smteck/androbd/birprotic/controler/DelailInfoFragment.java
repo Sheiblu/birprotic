@@ -66,7 +66,7 @@ public class DelailInfoFragment extends Fragment {
             Log.d("Fieeeeeend", nationality);
 
         }catch (Exception e){
-            Log.d("reeor", String.valueOf(e)+ data.length());
+            Log.d("reeor", String.valueOf(e));
         }
 
         Log.d("reeor", "Finish");
