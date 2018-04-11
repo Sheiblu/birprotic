@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            return false;
         }
 
         return super.onOptionsItemSelected(item);
@@ -99,10 +99,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_rate_us) {
 
         } else if (id == R.id.nav_about_us) {
-            DelailInfoFragment objFragment = new DelailInfoFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
-            Log.d("Hw","so33");
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

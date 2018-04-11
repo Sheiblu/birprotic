@@ -131,7 +131,8 @@ public class ListFragment extends Fragment {
                         textWorning.setHeight(45);
                         textWorning.setText(" Name List");
                         textWorning.setTextColor(Color.RED);
-                        textWorning.setBackgroundColor(Color.GREEN);
+                        listViewName.setBackgroundColor(Color.WHITE);
+
 
 
                     } catch (JSONException e) {
@@ -151,14 +152,13 @@ public class ListFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d("--Volley Lod--",error);
-                textWorning.setText(" Problem Please Check your internet");
-
-
+                textWorning.setText("");
+                textWorning.setBackgroundColor(0x00000000);
                 int sdk = android.os.Build.VERSION.SDK_INT;
                 if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                    linearLayout.setBackgroundDrawable(Drawable.createFromPath("/drawable/nointernet"));
+                    textWorning.setBackgroundDrawable(Drawable.createFromPath("/drawable/nointernet"));
                 } else {
-                    linearLayout.setBackground(Drawable.createFromPath("/drawable/nointernet"));
+                    textWorning.setBackground(Drawable.createFromPath("/drawable/nointernet"));
                 }
 
             }

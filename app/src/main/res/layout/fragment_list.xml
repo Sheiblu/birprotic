@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/icon_background"
+        android:background="@drawable/nonet"
         >
 
         <TextView
@@ -21,6 +21,7 @@
             android:height="700dp"
             android:gravity="center"
             android:textSize="25dp"
+            android:background="#ffffff"
             android:layout_marginBottom="5dp"
             android:text="Loading .... " />
 
