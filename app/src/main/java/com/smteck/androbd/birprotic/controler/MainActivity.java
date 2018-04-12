@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.smteck.androbd.birprotic.AboutUsFragment;
 import com.smteck.androbd.birprotic.R;
 
 public class MainActivity extends AppCompatActivity
@@ -37,10 +38,11 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-
             HomeFragment objFragment = new HomeFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
+
+
         Log.d("Hw","so");
 
 
@@ -66,12 +68,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return false;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -86,6 +82,7 @@ public class MainActivity extends AppCompatActivity
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
             Log.d("Hw","so");
+
         } else if (id == R.id.nav_list) {
             ListFragment objFragment = new ListFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
@@ -94,11 +91,15 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_war_71) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_rate_us) {
+            War1971Fragment objFragment = new War1971Fragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
 
         } else if (id == R.id.nav_about_us) {
+
+            AboutUsFragment objFragment = new AboutUsFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
 
         }
 
