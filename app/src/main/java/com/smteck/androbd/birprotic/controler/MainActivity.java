@@ -1,6 +1,8 @@
 package com.smteck.androbd.birprotic.controler;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,11 +14,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.smteck.androbd.birprotic.AboutUsFragment;
 import com.smteck.androbd.birprotic.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    Fragment currentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,18 +49,40 @@ public class MainActivity extends AppCompatActivity
 
         Log.d("Hw","so");
 
-
     }
+
 
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
         }
+
+        currentFragment = getSupportFragmentManager().findFragmentById(R.id.frame);
+
+        android.app.FragmentManager fm3 = getFragmentManager();
+        Log.i("Back Stracck Entry ", String.valueOf(fm3.getBackStackEntryCount()));
+
+        String checkTitle = (String) this.getTitle();
+        if (fm3.getBackStackEntryCount() > 0) {
+            Log.i("MainActivity", "popping backstack");
+
+        } else if (currentFragment instanceof DetailFragment ){
+
+                ListFragment objFragment = new ListFragment();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
+
+        } else {
+            HomeFragment objFragment = new HomeFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
+        }
+
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
