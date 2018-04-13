@@ -90,12 +90,9 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
 
-        int id = item.getItemId();
-        return super.onOptionsItemSelected(item);
-    }
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
