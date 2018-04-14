@@ -10,13 +10,13 @@ import com.android.volley.toolbox.Volley;
 /**
  * Created by mosharrofrubel on 9/21/15.
  */
-public class AppController extends Application {
+public class AppModel extends Application {
 
-    public static final String TAG = AppController.class.getSimpleName();
+    public static final String TAG = AppModel.class.getSimpleName();
 
     private RequestQueue mRequestQueue;
 
-    private static AppController mInstance;
+    private static AppModel mInstance;
 
     @Override
     public void onCreate() {
@@ -24,7 +24,7 @@ public class AppController extends Application {
         mInstance = this;
     }
 
-    public static synchronized AppController getInstance() {
+    public static synchronized AppModel getInstance() {
         return mInstance;
     }
 

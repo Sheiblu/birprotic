@@ -17,12 +17,12 @@ public class DetailFragment extends Fragment {
 
     TextView tvName,tvDetail,tvAward,tvEducation,tvVumika, tvNationality;
 
-    String  name;
-    String  place_birth;
-    String  work_edu;
-    String  role_war;
-    String other_award;
-    String nationality;
+    private String name;
+    private String place_birth;
+    private String work_edu;
+    private String role_war;
+    private String other_award;
+    private String nationality;
 
     public DetailFragment() {
         // Required empty public constructor

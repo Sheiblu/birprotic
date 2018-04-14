@@ -11,7 +11,7 @@
         android:textSize="20dp"
         android:gravity="center"
         android:background="#008000"
-        android:textColor="#FF0000"
+        android:textColor="#FF6347"
         android:text="মুক্তিযুদ্ধের ইতিহাস">
     </TextView>
 

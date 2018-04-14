@@ -23,7 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.smteck.androbd.birprotic.model.AppController;
+import com.smteck.androbd.birprotic.model.AppModel;
 import com.smteck.androbd.birprotic.R;
 
 import org.json.JSONArray;
@@ -38,12 +38,12 @@ public class ListFragment extends Fragment {
     ListView listViewName;
     LinearLayout linearLayout;
 
-    String [] name ;
-    String [] place_birth  ;
-    String [] other_award ;
-    String [] nationality ;
-    String [] work_edu  ;
-    String [] role_war ;
+    private String [] name ;
+    private String [] place_birth  ;
+    private String [] other_award ;
+    private String [] nationality ;
+    private String [] work_edu  ;
+    private String [] role_war ;
 
 
 
@@ -101,7 +101,7 @@ public class ListFragment extends Fragment {
 
 
 
-    void fetchingData() {
+    public void fetchingData() {
 
         String myURL = "https://undrooping-till.000webhostapp.com/getMuktijurdaDetail.php";
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(myURL, new Response.Listener<JSONArray>() {
@@ -164,7 +164,7 @@ public class ListFragment extends Fragment {
             }
         });
 
-        AppController.getInstance().addToRequestQueue(jsonArrayRequest);
+        AppModel.getInstance().addToRequestQueue(jsonArrayRequest);
 
     }
 
