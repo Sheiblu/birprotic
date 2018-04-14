@@ -129,7 +129,7 @@ public class ListFragment extends Fragment {
                         role_war [i]  = jsonObject.getString("roal_in_war");
 
                         textWorning.setHeight(45);
-                        textWorning.setText(" Name List");
+                        textWorning.setText("নামের তালিকা");
                         textWorning.setTextColor(Color.RED);
                         listViewName.setBackgroundColor(Color.WHITE);
 

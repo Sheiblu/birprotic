@@ -4,9 +4,22 @@
     android:layout_height="match_parent"
     tools:context="com.smteck.androbd.birprotic.controler.War1971Fragment">
 
+    <TextView
+        android:layout_margin="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:background="#008000"
+        android:textColor="#FF0000"
+        android:text="মুক্তিযুদ্ধের ইতিহাস">
+    </TextView>
+
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp">
 
         <TextView
             android:layout_margin="10dp"

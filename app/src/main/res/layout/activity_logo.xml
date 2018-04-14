@@ -26,9 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:gravity="center"
-            android:text="মুক্তিযোদ্ধা "
-
-
+            android:text="@string/app_name"
             android:textColor="@color/colorAccent"
             android:textSize="30dp" />
     </LinearLayout>

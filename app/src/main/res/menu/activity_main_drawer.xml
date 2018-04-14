@@ -7,19 +7,19 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Home" />
+            android:title="হোম" />
         <item
             android:id="@+id/nav_list"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="List" />
+            android:title="বীরপ্রতীকদের তালিকা" />
         <item
             android:id="@+id/nav_war_71"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Muktijurdo 71" />
+            android:title="মুক্তিযুদ্ধের ইতিহাস" />
         <item
             android:id="@+id/nav_about_us"
             android:icon="@drawable/ic_menu_manage"
-            android:title="About Developer" />
+            android:title="আমাদের সম্পর্কে জানুন" />
 
     </group>
 
